@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.DynamicInsert;
 
 import com.example.demo.board.BoardVO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -20,7 +21,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Entity	// 해당 객체가 JPA에서 관리하고 있다라는것을 정의, 필수
 @Table(name="notice")	// DB에 존재하는 테이블 이름을 매핑, 생략하면 클래스명이 테이블명이 됨
 @DynamicInsert // insert 쿼리문을 날릴 때 null 인 값은 제외하고 쿼리문을 작성
@@ -35,5 +35,12 @@ public class NoticeVO extends BoardVO {
     	noticeFileVO.setNoticeVO(this);
     	list.add(noticeFileVO);
     }
+
+	@Override
+	public String toString() {
+		return "NoticeVO [" + super.toString() + ", list=" + list + "]";
+	}
+    
+    
 	
 }

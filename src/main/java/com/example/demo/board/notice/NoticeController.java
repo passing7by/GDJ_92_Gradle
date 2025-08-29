@@ -75,7 +75,7 @@ public class NoticeController {
 	
 	@GetMapping("list")
 	public Page<NoticeVO> list(@PageableDefault(size = 2, sort = "boardNum", direction = Direction.DESC) Pageable pageable) throws Exception {
-		
+//		Pagere
 		return noticeService.list(pageable);
 	}
 	

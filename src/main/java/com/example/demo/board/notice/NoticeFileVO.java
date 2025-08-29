@@ -18,10 +18,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+//@ToString
 @Entity
 @Table(name="notice_files")
-//@DynamicInsert // insert 쿼리문을 날릴 때 null 인 값은 제외하고 쿼리문을 작성
+@DynamicInsert // insert 쿼리문을 날릴 때 null 인 값은 제외하고 쿼리문을 작성
 public class NoticeFileVO {
 	
 	@Id
@@ -36,5 +36,9 @@ public class NoticeFileVO {
     
 	private String saveName;
 	private String oriName;
+	@Override
+	public String toString() {
+		return "NoticeFileVO [fileNum=" + fileNum + ", saveName=" + saveName + ", oriName=" + oriName + "]";
+	}
 	
 }

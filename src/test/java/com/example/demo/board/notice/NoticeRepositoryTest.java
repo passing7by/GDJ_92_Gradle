@@ -2,11 +2,15 @@ package com.example.demo.board.notice;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.awt.print.Pageable;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.board.BoardVO;
@@ -15,6 +19,7 @@ import com.example.demo.board.BoardVO;
 //Repository 사용
 
 @SpringBootTest
+@Transactional
 class NoticeRepositoryTest {
 
 	@Autowired
@@ -58,5 +63,14 @@ class NoticeRepositoryTest {
 //		noticeVO.setBoardNum(6L);
 		noticeRepository.deleteById(7L);
 //		noticeRepository.delete(noticeVO);
+	}
+	
+	@Test
+	void test4() throws Exception {
+//		Pageable pageable = (Pageable) PageRequest.of(0, 2, Sort.by("board_num").descending());
+		
+		List<NoticeVO> list = noticeRepository.findByBoardTitleLike("%t%");
+		System.err.println(list);
+		
 	}
 }
