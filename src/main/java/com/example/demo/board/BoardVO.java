@@ -2,6 +2,7 @@ package com.example.demo.board;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -49,7 +50,8 @@ public class BoardVO {
 	@CreationTimestamp
 	private LocalDateTime boardDate;
 	
-	@Column(columnDefinition = "BIGINT DEFAULT 0")
+//	@Column(columnDefinition = "BIGINT DEFAULT 0")
+	@ColumnDefault("0")
 	private Long boardHit;
 	
 	@Transient	// DB에 사용되지 않음
