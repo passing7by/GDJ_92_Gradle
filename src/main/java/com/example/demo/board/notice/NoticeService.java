@@ -32,7 +32,7 @@ public class NoticeService {
 		return page;
 	}
 	
-	public NoticeVO add(NoticeVO noticeVO) {
+	public NoticeVO add(NoticeVO noticeVO) throws Exception {
 		return noticeRepository.save(noticeVO);
 	}
 }
