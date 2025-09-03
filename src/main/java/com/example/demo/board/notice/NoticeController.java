@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.board.BoardVO;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 //@Controller
 // 각 메서드에 @ResponseBody를 붙이는 대신 컨트롤러에 @RestController를 붙이기
 @CrossOrigin
@@ -78,5 +84,15 @@ public class NoticeController {
 //		Pagere
 		return noticeService.list(pageable);
 	}
+	
+	@PostMapping("add")
+	public NoticeVO postMethodName(NoticeVO noticeVO) {
+		System.err.println("add");
+		
+		noticeVO = noticeService.add(noticeVO);
+		
+		return noticeVO;
+	}
+	
 	
 }

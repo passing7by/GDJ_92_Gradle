@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.board.BoardVO;
+
 @Service
 public class NoticeService {
 
@@ -28,5 +30,9 @@ public class NoticeService {
 		Page<NoticeVO> page = noticeRepository.findAll(pageable);
 		
 		return page;
+	}
+	
+	public NoticeVO add(NoticeVO noticeVO) {
+		return noticeRepository.save(noticeVO);
 	}
 }

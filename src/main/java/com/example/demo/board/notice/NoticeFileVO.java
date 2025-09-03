@@ -16,9 +16,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+//@ToString
 @Getter
 @Setter
-//@ToString
 @Entity
 @Table(name="notice_files")
 @DynamicInsert // insert 쿼리문을 날릴 때 null 인 값은 제외하고 쿼리문을 작성
