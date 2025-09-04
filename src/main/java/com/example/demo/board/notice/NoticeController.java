@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 // 각 메서드에 @ResponseBody를 붙이는 대신 컨트롤러에 @RestController를 붙이기
 @CrossOrigin
 @RestController // 이 컨트롤러 안의 모든 메서드는 json으로 응답하도록 함
-@RequestMapping("/notice/**")
+@RequestMapping("/api/notice/**")
 public class NoticeController {
 	
 	/* restful test

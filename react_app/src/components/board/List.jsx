@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function List() {
   
@@ -40,7 +41,7 @@ function List() {
   useEffect(() => {
     // 아래의 코드는 useEffect()안에서 실행되지 않으면 서버에 계속 요청을 보내게 됨
     // 이를 해결하기 위해 첫 렌더링, 그리고 page가 바뀔 때만 요청을 보내도록 useEffect() 안에서 작성
-    fetch(`http://localhost/notice/list?page=${page}`)
+    fetch(`http://localhost/api/notice/list?page=${page}`)
       .then(r => r.json())
       .then(r => {
           // console.log(r);
@@ -68,6 +69,9 @@ function List() {
       <div>
         <h3>Page: {page}</h3>
         <button onClick={nextPage}>NEXT</button>
+      </div>
+      <div>
+        <Link to="/notice/add">Add</Link>
       </div>
     </>
   )
