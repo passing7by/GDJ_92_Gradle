@@ -26,11 +26,11 @@ import jakarta.annotation.PostConstruct;
 public class JwtTokenManager {
 	// 1. access 토큰 유효 시간
 	@Value("${jwt.accessValidTime}")
-	private String accessValidTime;
+	private Long accessValidTime;
 	
 	// 2. refresh 토큰 유효 시간
 	@Value("${jwt.refreshValidTime}")
-	private String refreshValidTime;
+	private Long refreshValidTime;
 	
 	// 3. 발급자
 	@Value("${jwt.issuer}")
@@ -61,7 +61,7 @@ public class JwtTokenManager {
 	
 	// 토큰 생성 (클래스 내부 호출용)
 	// access/refresh에 따라 다른 값을 받기 위해 validTime을 매개변수로 받음
-	private String createToken(Authentication authentication, String validTime) throws Exception { 
+	private String createToken(Authentication authentication, Long validTime) throws Exception { 
 		String jwt = Jwts.builder()
 						 .subject(authentication.getName()) // 사용자 id
 						 .claim("roles", authentication.getAuthorities()) // 토큰에 넣고싶은 정보 (개발자가 임의로 추가한 정보)

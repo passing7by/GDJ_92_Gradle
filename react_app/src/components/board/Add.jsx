@@ -49,9 +49,13 @@ function Add() {
     console.log("boardFiles.current: " + boardFiles.current);
     param.append("attaches", boardFiles.current);
 
+    // 로그인 유무 판단 혹은 권한이 필요할 때는 반드시 headers에 토큰을 넣어서 요청해야 함
     fetch('http://localhost/api/notice/add', {
       method: 'post',
-      body: param
+      body: param,
+      headers: {
+
+      }
     })
     .then(r => r.json())
     .then(r => {

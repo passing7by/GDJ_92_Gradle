@@ -4,6 +4,7 @@ import Index from "../components";
 import Add from "../components/board/Add";
 import StudyParam from "../study/StudyParam";
 import Login from "../components/member/Login";
+import Logout from "../components/member/Logout";
 
 export default function AppRoutes() { // 이렇게 하면 맨 밑에 export default 안 써줘도 됨됨
 
@@ -21,6 +22,7 @@ export default function AppRoutes() { // 이렇게 하면 맨 밑에 export defa
 
         <Route path="/member/">
           <Route path="login" element={<Login/>}></Route>
+          <Route path="logout" element={<Logout/>}></Route>
         </Route>
 
         {/* element나 Component나 같은 역할 */}
