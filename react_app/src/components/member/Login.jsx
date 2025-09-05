@@ -12,8 +12,8 @@ export default function Login() {
       method: 'post',
       body: form
     })
-      .then(r => r.json())
-      .then(r => console.log(r))
+      // .then(r => r.json())
+      .then(r => console.log(r.headers))
       .catch(e => console.log(e))
       ;
   }

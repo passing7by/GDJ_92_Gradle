@@ -1,12 +1,18 @@
 package com.example.demo.member;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -20,8 +26,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name="member")
-public class MemberVO {
+@Table(name="members")
+public class MemberVO implements UserDetails {
 	
 	@Id
 	private String username;
@@ -33,7 +39,17 @@ public class MemberVO {
 	@Temporal(TemporalType.DATE)
 	private LocalDate birth;
 	
-	@OneToMany(mappedBy = "memberVO", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "memberVO", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<MemberRoleVO> list;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		ArrayList<GrantedAuthority> list = new ArrayList<>();
+		this.list.forEach(e -> {
+			SimpleGrantedAuthority g = new SimpleGrantedAuthority(e.getRoleVO().getRoleName());
+			list.add(g);
+		});
+		return list;
+	}
 	
 }
