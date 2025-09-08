@@ -78,7 +78,7 @@ public class SecurityConfig {
 		
 		configuration.setAllowedOrigins(List.of("http://localhost:5173")); // *도 사용 가능
 		
-		configuration.setAllowedMethods(List.of("GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS")); // *은 사용 불가
+		configuration.setAllowedMethods(List.of("GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS")); // *은 사용 불가 | 대문자로 작성
 		configuration.setAllowedHeaders(List.of("Authorization")); // 헤더를 허락해줘야 함 | *도 사용 가능
 		
 		configuration.setExposedHeaders(List.of("accessToken")); // 이걸 추가해야 헤더를 클라이언트로 내보낼 수 있음
